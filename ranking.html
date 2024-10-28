@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de Jogadores</title>
+    <link rel="stylesheet" href="./src/assets/css/reset.css">
+    <link rel="stylesheet" href="./src/assets/css/styles.css">
+</head>
+<body>
+    <h1>Ranking de Jogadores</h1>
+    <ul id="ranking-list"></ul>
+
+    <script>
+        const scores = JSON.parse(localStorage.getItem("scores")) || {};
+        const rankingList = document.getElementById("ranking-list");
+
+        Object.keys(scores)
+            .sort((a, b) => scores[b] - scores[a]) // Ordena por pontuação
+            .forEach(nickname => {
+                const li = document.createElement("li");
+                li.textContent = `${nickname}: ${scores[nickname]}`;
+                rankingList.appendChild(li);
+            });
+    </script>
+</body>
+</html>
