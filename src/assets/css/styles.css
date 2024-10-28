@@ -4,6 +4,8 @@ body{
 
 .container {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .menu {
@@ -15,4 +17,23 @@ body{
     width: 100%;
     background: linear-gradient(to right, #00FFCC, #003300);
     color: #d3e013;
+}
+
+.panel{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff0000;
+}
+
+.square{
+    height: 150px;
+    width: 150px;
+    border: 1px solid #000000;
+    background-color: #7fffd4;
+}
+
+.enemy {
+    background-color: #ff0000;
 }
