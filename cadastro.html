@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Jogador</title>
+    <link rel="stylesheet" href="./src/assets/css/reset.css">
+    <link rel="stylesheet" href="./src/assets/css/styles.css">
+</head>
+<body>
+    <div id="cadastro-screen">
+        <h1>Cadastro de Jogador</h1>
+        <input type="text" id="nickname" placeholder="Insira seu nickname do GitHub" required>
+        <button id="cadastro-btn">Cadastrar</button>
+    </div>
+
+    <script>
+        const cadastroBtn = document.getElementById("cadastro-btn");
+
+        cadastroBtn.addEventListener("click", () => {
+            const nickname = document.getElementById("nickname").value;
+            if (nickname) {
+                localStorage.setItem("nickname", nickname); // Armazena o nickname no localStorage
+                window.location.href = "index.html"; // Redireciona para a página do jogo
+            } else {
+                alert("Por favor, insira um nickname.");
+            }
+        });
+    </script>
+</body>
+</html>

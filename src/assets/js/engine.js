@@ -133,6 +133,14 @@ function endGame() {
     gameOverScreen.style.display = "flex";
     const gameOverMessage = document.getElementById("game-over-message");
     gameOverMessage.textContent = "Game Over! O seu resultado foi: " + state.values.result;
+
+    // Armazena a pontuação no localStorage
+    const nickname = localStorage.getItem("nickname");
+    if (nickname) {
+        const scores = JSON.parse(localStorage.getItem("scores")) || {};
+        scores[nickname] = (scores[nickname] || 0) + state.values.result; // Adiciona a pontuação atual
+        localStorage.setItem("scores", JSON.stringify(scores)); // Salva as pontuações no localStorage
+    }
 }
 
 function playGameMusic() {
