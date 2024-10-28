@@ -1,11 +1,16 @@
 body{
+    height: 100vh;
+    width: 100vw;
+    cursor: url("../images/cursor.png"), auto;
     
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+    background-image: url("../images/wall.png");
+    background-size: 200px;
 }
 
 .menu {
@@ -17,6 +22,13 @@ body{
     width: 100%;
     background: linear-gradient(to right, #00FFCC, #003300);
     color: #d3e013;
+    border-bottom: 5px solid #ffd700;
+}
+
+.menu-lives {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .panel{
@@ -24,16 +36,22 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ff0000;
+    
 }
 
 .square{
-    height: 150px;
-    width: 150px;
-    border: 1px solid #000000;
-    background-color: #7fffd4;
+    height: 200px;
+    width: 200px;
+    background: url("../imgs/janela-sem-ralph.png");
+    background-size: cover;
 }
 
 .enemy {
-    background-color: #ff0000;
+    background-image: url("../images/janela-ralph.png");
+    background-size: cover;
 }
+
+.square:hover {
+    background-color: #47e9b3;
+    transition-duration: 0.5s;
+  }
