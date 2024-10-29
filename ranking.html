@@ -8,28 +8,38 @@
     <link rel="stylesheet" href="./src/assets/css/styles.css">
 </head>
 <body>
-    <h1>Ranking</h1>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Pontuação</th>
-        </tr>
-        <tbody id="ranking-list">
-            <!-- Os dados do ranking serão inseridos aqui via JavaScript -->
-        </tbody>
-    </table>
-    <button onclick="window.location.href='index.html'">Voltar para o Jogo</button>
+    <div class="ranking-container">
+        <h1>Ranking</h1>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Pontuação</th>
+            </tr>
+            <tbody id="ranking-list">
+                <!-- Os dados do ranking serão inseridos aqui via JavaScript -->
+            </tbody>
+        </table>
+        <button onclick="window.location.href='index.html'">Voltar para o Jogo</button>
+        <img src="./src/assets/images/ralph.png" alt="Ralph" class="ralph-image">
+    </div>
 
     <script>
-        // Simulação de dados de ranking
         const rankings = JSON.parse(localStorage.getItem('rankings')) || [];
+        console.log(rankings); // Para verificar os dados
         const rankingList = document.getElementById('ranking-list');
 
-        rankings.forEach(entry => {
+        if (rankings.length === 0) {
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${entry.name}</td><td>${entry.score}</td>`;
+            row.innerHTML = `<td colspan="2">Nenhum ranking disponível</td>`;
             rankingList.appendChild(row);
-        });
+        } else {
+            rankings.forEach((entry, index) => {
+                const row = document.createElement('tr');
+                const trophy = index === 0 ? '🏆' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                row.innerHTML = `<td>${trophy} ${entry.name}</td><td>${entry.score}</td>`;
+                rankingList.appendChild(row);
+            });
+        }
     </script>
 </body>
 </html>

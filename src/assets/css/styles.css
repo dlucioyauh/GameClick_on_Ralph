@@ -1,9 +1,9 @@
 body {
-    height: 100vh;
+    height: auto; /* Permite que o body cresça com o conteúdo */
     width: 100vw;
     cursor: url("../images/cursor.png"), auto;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* Esconde rolagem horizontal, se necessário */
 }
 
 /* Ajustes da tela inicial */
@@ -86,11 +86,12 @@ body {
 .panel {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Alinha os itens ao centro */
+    justify-content: center; /* Centraliza os itens verticalmente */
     gap: 2rem;
     height: calc(100vh - 90px);
     padding: 20px 0;
+    position: relative; /* Para poder usar z-index corretamente */
 }
 
 .panel-row {
@@ -222,4 +223,68 @@ nav ul li a, nav ul li button {
 
 nav ul li a:hover, nav ul li button:hover {
     background-color: #575757;
+}
+
+#ranking-btn {
+    padding: 10px 20px; /* Ajuste conforme necessário */
+    font-size: 18px; /* Tamanho da fonte */
+    background-color: #ff0000; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Remove borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor pointer */
+    margin-top: 10px; /* Espaçamento acima do botão */
+}
+
+#ranking-btn:hover {
+    background-color: #d60000; /* Cor ao passar o mouse */
+}
+
+.game-button {
+    background-color: red; /* Cor de fundo vermelha */
+    color: rgb(12, 12, 12); /* Texto branco */
+    font-size: 16px; /* Tamanho da fonte */
+    padding: 15px 20px; /* Padding para o botão */
+    border: none; /* Remove bordas */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor como ponteiro */
+    margin-top: 20px; /* Espaçamento acima do botão */
+    display: block; /* Para ocupar toda a largura disponível */
+    width: 100%; /* Faz com que o botão ocupe 100% da largura do pai */
+    max-width: 250px; /* Limita a largura máxima do botão */
+    transition: background-color 0.3s; /* Efeito de transição na cor de fundo */
+}
+
+.game-button:hover {
+    background-color: darkred; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo para o container do ranking */
+.ranking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Altera de height para min-height */
+    background: linear-gradient(to right, #00FFCC, #003300);
+    padding: 20px;
+    overflow: auto; /* Permite rolagem se necessário */
+}
+
+table {
+    width: 50%; /* Mantenha a largura da tabela */
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    text-align: center; /* Centraliza texto na tabela */
+}
+
+th, td {
+    border: 2px solid #ffd700;
+    padding: 5px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+* {
+    box-sizing: border-box;
 }
