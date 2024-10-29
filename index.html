@@ -9,47 +9,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
-    <a href="ranking.html">Ver Ranking</a>
 
     <!-- styles -->
     <link rel="stylesheet" href="./src/assets/css/reset.css">
     <link rel="stylesheet" href="./src/assets/css/styles.css">
+    <link rel="icon" href="./src/assets/images/cursor.png" type="image/png">
 </head>
 <body>
-    <!-- Tela de início -->
 
-    <div id="start-screen">
-        <img src="./assets/images/start.jpg" alt="Iniciar Jogo">
+    
+    <!-- Tela de início -->
+    <div id="start-screen" style="display: none;">
+        <img src="./src/assets/images/start.jpg" alt="Iniciar Jogo">
         <button id="start-btn">Iniciar Jogo</button>
     </div>
 
     <!-- Tela de game over -->
-
     <div id="game-over-screen" style="display: none;">
         <h1 id="game-over-message"></h1>
         <button id="restart-btn">Recomeçar Jogo</button>
     </div>
 
-     <!-- Div do jogo -->
-
-    <div class="container">
+    <!-- Div do jogo -->
+    <div id="game-container" class="container" style="display: none;">
         <div class="menu">
+                <div class="menu">
+        <span id="menu-time">Menu Time</span>
+        <button id="ranking-btn" onclick="window.location.href='ranking.html'">Ver Ranking</button>
+    </div>
+
+    <button onclick="startGame()">Iniciar Jogo</button>
             <div class="menu-time">
                 <h2 style="color: red;">Time Left</h2>
                 <div id="time-left">60</div>  
-                
             </div>
             <div class="menu-score">
                 <h2 style="color: red;">Your Score</h2>
-                <h2 id="score">0</h2> <!-- Adicionado ID para pontuação -->
+                <h2 id="score">0</h2>
             </div>
             <div class="menu-lives">
                 <img src="./src/assets/images/player.png" alt="Imagem do jogador" height="60px" />
-                <h2 id="lives">3x</h2> <!-- Adicionado ID para vidas -->
+                <h2 id="lives">3x</h2>
             </div>
+            <button id="ranking-btn" onclick="window.location.href='ranking.html'">Ver Ranking</button>
         </div>
-        
-
         <div class="panel">
             <div class="panel-row">
                 <div class="square" id="1"></div>
@@ -70,5 +73,6 @@
     </div>
 
     <script defer src="./src/assets/js/engine.js"></script>
+    <script defer src="./src/assets/js/cadastro.js"></script>
 </body>
 </html>

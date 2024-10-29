@@ -1,10 +1,51 @@
-body{
+body {
     height: 100vh;
     width: 100vw;
     cursor: url("../images/cursor.png"), auto;
-    
+    margin: 0;
+    overflow: hidden;
 }
 
+/* Ajustes da tela inicial */
+#start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 90;
+}
+
+#start-screen img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Isso fará a imagem cobrir toda a tela */
+    z-index: -1; /* Coloca a imagem atrás do botão */
+}
+
+#start-btn {
+    position: relative; /* Para ficar sobre a imagem */
+    padding: 1.5rem 2.5rem;
+    font-size: 1.8rem;
+    background-color: #ffd700;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 91; /* Garante que o botão fique sobre a imagem */
+}
+
+#start-btn:hover {
+    transform: scale(1.1);
+    background-color: #ffed4a;
+}
+
+/* Ajustes do container principal do jogo */
 .container {
     display: flex;
     flex-direction: column;
@@ -13,57 +54,43 @@ body{
     background-size: 200px;
 }
 
+/* Menu do jogo */
 .menu {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    height: 90px;
+    height: 100px;
     width: 100%;
     background: linear-gradient(to right, #00FFCC, #003300);
     color: #d3e013;
     border-bottom: 5px solid #ffd700;
 }
 
-.menu-lives {
+.menu-time, .menu-score, .menu-lives {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 2px;
+    /* Adicione um tamanho fixo ou mínimo para garantir uniformidade */
+    min-width: 100px; /* Ajuste conforme necessário */
 }
 
-.menu-time h2 {
-    margin: 0; /* Remove margens padrão */
-    text-align: center; /* Centraliza o texto */
+#time-left, #score, #lives {
+    font-size: 2rem;
+    color: #d3e013;
+    font-weight: bold;
+    text-align: center; /* Alinhamento centralizado */
 }
 
-.menu-time {
-    display: flex; /* Usar flexbox para alinha os itens */
-    flex-direction: column; /* Organiza em coluna */
-    align-items: center; /* Centraliza horizontalmente */
-}
-
-.menu-score h2 {
-    margin: 0; /* Remove margens padrão */
-    text-align: center;
-     
-}
-
-#time-left {
-    display: flex
-    font-size: 3rem; /* Ajuste o tamanho da fonte conforme necessário */
-    color: #d3e013; /* Use a mesma cor para manter a consistência */
-}
-
-
+/* Painel do jogo */
 .panel {
-  
     display: flex;
-    gap: 2rem;
-    height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 1rem;
+    gap: 2rem;
+    height: calc(100vh - 90px);
+    padding: 20px 0;
 }
 
 .panel-row {
@@ -71,137 +98,128 @@ body{
     gap: 1rem;
 }
 
-
 .square {
-    height: 200px;
-    width: 200px;
-    background: url("../images/janela-sem-ralph.png");
+    height: 150px;
+    width: 150px;
+    background: url("../images/janela-sem-ralph.png") center center no-repeat;
     background-size: cover;
+    border-radius: 5%;
+    transition: all 0.3s ease;
 }
-
-.square:hover {
-    background-color: #47e9b3;
-    transition-duration: 0.5s;
-  }
 
 .enemy {
     background-image: url("../images/janela-ralph.png");
-    background-size: cover;
 }
 
-#start-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 90;
-    width: 100vw;
-    height: 100vh;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.1s ease, visibility 0.1s ease;
-}
-
-#start-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#start {
-    background-image:url(../images/start.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 80%;
-    height: auto;
-    aspect-ratio: 16/9;
-    z-index: 100;
-    position: fixed;
-    border-radius: 1rem;
-    border: 4px solid #ffd700;
-    padding: 2rem;
-    display: flex;
-    
-}
-
-
-#start-logo {
-    width: 50%;
-}
-
-#start-btn {
-    padding: 2rem 3rem;
-    z-index: 200;
-    font-size: 2rem;
-    text-align: center;
-    background-color: #ffd700;
-    border-radius: 0.5rem;
-    border: none;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    transition: scale 0.5s ease-in-out;
-    &:hover {
-        transform: scale(1.1);
-        cursor: url("../images/cursor.png"), auto;
-    }
-}
-
+/* Tela de Game Over */
 #game-over-screen {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     position: fixed;
-    z-index: 90;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#game-over-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#game-over {
-    background-color: #000000; 
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 70%;
-    height: auto;
-    aspect-ratio: 16/10;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
     z-index: 100;
-    position: fixed;
-    border-radius: 1rem;
-    border: 4px solid #ffd700;
-    padding: 6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;    
-}
-
-#game-over h1 {
-    font-size: 7rem;
-    color: #ffffff; 
-}
-
-#restart-btn {
-    padding: 2rem 3rem;
-    z-index: 200;
-    font-size: 2rem;
-    text-align: center;
-    background-color: #ffd700;
-    border-radius: 0.5rem;
-    border: none;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-    transition: scale 0.5s ease-in-out;
-    &:hover {
-        transform: scale(1.1);
-        cursor: url("../images/cursor.png"), auto;
-    }
 }
 
 #game-over-message {
     color: #ffffff;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#restart-btn {
+    padding: 1.5rem 2.5rem;
+    font-size: 1.8rem;
+    background-color: #ffd700;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#restart-btn:hover {
+    transform: scale(1.1);
+    background-color: #ffed4a;
+}
+
+
+/* Tela de Cadastro */
+#cadastro-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+    background: linear-gradient(to right, #00FFCC, #003300);
+}
+
+#cadastro-screen h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#nickname {
+    padding: 15px;
+    font-size: 1.2rem;
+    width: 300px;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#cadastro-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cadastro-btn:hover {
+    background-color: #ffed4a;
+    transform: scale(1.05);
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a, nav ul li button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover, nav ul li button:hover {
+    background-color: #575757;
 }
