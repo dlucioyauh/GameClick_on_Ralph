@@ -20,6 +20,12 @@ const state = {
     },
 };
 
+// Função para exibir a tela de início
+function showStartScreen() {
+    document.getElementById('cadastro-screen').style.display = 'none';
+    document.getElementById('start-screen').style.display = 'flex';
+}
+
 // Inicializa o jogo
 document.addEventListener("DOMContentLoaded", () => {
     const startScreen = document.getElementById("start-screen");
@@ -42,6 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+    // Adiciona evento de clique para o botão de cadastro
+    document.getElementById('cadastro-btn').addEventListener('click', function() {
+        // Lógica de validação ou processamento do cadastro pode ser adicionada aqui
+        
+        // Após o cadastro, chama a função para mostrar a tela de início
+        showStartScreen();
+    });
 
 // Função para o timer de contagem regressiva
 function countDown() {

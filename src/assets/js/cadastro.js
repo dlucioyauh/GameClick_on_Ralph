@@ -1,8 +1,9 @@
 // Aguarda o carregamento completo do DOM
 document.addEventListener("DOMContentLoaded", () => {
-    // listeners para debug
     const inputField = document.getElementById("nickname");
-    if (inputField) { // Verifica se o inputField existe
+    
+    // Verifica se o inputField existe
+    if (inputField) {
         inputField.addEventListener("focus", () => {
             console.log("Campo focado");
         });
@@ -11,14 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Código existente do botão
     const cadastroBtn = document.getElementById("cadastro-btn");
-    if (cadastroBtn) { // Verifica se o cadastroBtn existe
+    
+    // Verifica se o cadastroBtn existe
+    if (cadastroBtn) {
         cadastroBtn.addEventListener("click", () => {
             const nickname = inputField.value; // Usa inputField que já foi verificado
             if (nickname) {
                 localStorage.setItem("nickname", nickname);
-                window.location.href = "index.html";
+                window.location.href = "index.html"; // Redireciona para o jogo
             } else {
                 alert("Por favor, insira um nickname.");
             }
