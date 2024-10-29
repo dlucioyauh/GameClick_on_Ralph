@@ -20,12 +20,6 @@ const state = {
     },
 };
 
-// Função para exibir a tela de início
-function showStartScreen() {
-    document.getElementById('cadastro-screen').style.display = 'none';
-    document.getElementById('start-screen').style.display = 'flex';
-}
-
 // Inicializa o jogo
 document.addEventListener("DOMContentLoaded", () => {
     const startScreen = document.getElementById("start-screen");
@@ -46,8 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         gameContainer.style.display = "block";
         init();
     });
-});
-
 
     // Adiciona evento de clique para o botão de cadastro
     document.getElementById('cadastro-btn').addEventListener('click', function() {
@@ -56,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Após o cadastro, chama a função para mostrar a tela de início
         showStartScreen();
     });
+});
 
 // Função para o timer de contagem regressiva
 function countDown() {
@@ -124,8 +117,6 @@ function endGame() {
         window.location.href = 'ranking.html'; // Redireciona para a página de ranking
     });
 }
-
-
 
 // Função para salvar a pontuação
 function saveScore(name, score) {
