@@ -26,10 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameContainer = document.getElementById("game-container");
     const nickname = localStorage.getItem("nickname");
 
-    if (nickname) {
-        startScreen.style.display = "block";
-    } else {
+    // Verificação para redirecionamento
+    if (!nickname) {
+        console.log("Nickname não encontrado, redirecionando para cadastro.");
         window.location.href = "cadastro.html";
+    } else {
+        startScreen.style.display = "block";
     }
 
     const startBtn = document.querySelector("#start-btn");
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         init();
     });
 });
+
 
 // Função para o timer de contagem regressiva
 function countDown() {
