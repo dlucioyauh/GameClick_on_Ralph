@@ -159,13 +159,15 @@ body {
 
 /* Tela de Cadastro */
 #cadastro-screen {
+    font-size: 2rem; /* Ajuste o tamanho do texto para telas pequenas */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh; /* Garante que ocupe pelo menos 100% da altura da tela */
     padding: 20px;
     gap: 40px;
     background: linear-gradient(to right, #00FFCC, #003300);
+    overflow-y: auto; /* Permite rolagem vertical se necessário */
 }
 
 #cadastro-screen h1 {
@@ -193,6 +195,8 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%; /* Deixe o botão ocupar toda a largura disponível */
+    max-width: 300px; /* Mantenha um limite máximo */
 }
 
 #cadastro-btn:hover {
