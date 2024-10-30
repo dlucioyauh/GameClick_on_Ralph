@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Verificação para redirecionamento
     if (!nickname) {
         console.log("Nickname não encontrado, redirecionando para cadastro.");
-        window.location.href = "cadastro.html";
+        window.location.href = "cadastro.html"; // Altere para o caminho correto se necessário
     } else {
         startScreen.style.display = "block";
     }
@@ -44,9 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Adiciona evento de clique para o botão de cadastro
     document.getElementById('cadastro-btn').addEventListener('click', function() {
         // Lógica de validação ou processamento do cadastro pode ser adicionada aqui
-        
-        // Após o cadastro, chama a função para mostrar a tela de início
-        showStartScreen();
+        const nicknameInput = document.getElementById('nickname-input').value; // Supondo que você tenha um input para nickname
+        if (nicknameInput) {
+            localStorage.setItem("nickname", nicknameInput);
+            showStartScreen(); // Chama a função para mostrar a tela de início
+        } else {
+            alert("Por favor, insira um nickname!");
+        }
     });
 });
 
