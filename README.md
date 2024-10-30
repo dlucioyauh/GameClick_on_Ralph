@@ -1,4 +1,3 @@
-Aqui está o `README.md` atualizado com os caminhos das imagens conforme você especificou:
 
 ---
 
