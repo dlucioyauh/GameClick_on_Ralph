@@ -5,7 +5,7 @@
 
 **GameClick_on_Ralph** é um jogo de reflexo e precisão onde o objetivo é clicar em alvos que aparecem aleatoriamente na tela para ganhar pontos e vidas, enquanto o tempo corre contra você. O jogo é inspirado em clássicos de ação rápida e se passa em um ambiente com gráficos vibrantes e sons imersivos. 
 
-> **Acesse o jogo online:** [GameClick_on_Ralph na Vercel](https://game-click-on-ralph-168j8dhgk-dlucioyauhs-projects.vercel.app)
+> **Acesse o jogo online:** [GameClick_on_Ralph na Vercel](https://game-click-on-ralph.vercel.app/)
 
 ---
 
