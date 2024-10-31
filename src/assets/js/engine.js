@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Adiciona evento de clique para o botão de cadastro
     document.getElementById('cadastro-btn').addEventListener('click', function() {
-        // Lógica de validação ou processamento do cadastro pode ser adicionada aqui
         const nicknameInput = document.getElementById('nickname-input').value; // Supondo que você tenha um input para nickname
         if (nicknameInput) {
             localStorage.setItem("nickname", nicknameInput);
@@ -71,6 +70,12 @@ function playSound(audioName) {
     audio.play();
 }
 
+// Função para atualizar a pontuação e vidas no DOM
+function updateScoreAndLives() {
+    state.view.score.textContent = state.values.result; // Atualiza a pontuação
+    state.view.lives.textContent = `${state.values.currentLives}x`; // Atualiza as vidas
+}
+
 // Função para iniciar o jogo
 function init() {
     console.log("Iniciando o jogo..."); // Log para verificar a inicialização
@@ -80,9 +85,7 @@ function init() {
     state.values.currentLives = 3; // Reinicia as vidas
 
     // Atualiza a interface do usuário
-    state.view.score.textContent = state.values.result;
-    state.view.timeLeft.textContent = state.values.currentTime;
-    state.view.lives.textContent = state.values.currentLives;
+    updateScoreAndLives(); // Atualiza a pontuação e vidas
 
     // Inicia a música de fundo
     if (state.values.backgroundMusic) {
@@ -108,7 +111,7 @@ function endGame() {
     gameContainer.style.display = "none";
     gameOverScreen.style.display = "flex";
     document.getElementById("game-over-message").textContent = `Game Over! Pontuação: ${state.values.result}`;
-    
+
     // Toca a música de game over
     playSound("game-over-2");
 
@@ -147,9 +150,7 @@ function restartGame() {
 
     // Atualiza a interface do usuário
     console.log(`Vidas antes de reiniciar: ${state.values.currentLives}`); // Log para verificar o valor das vidas
-    state.view.score.textContent = state.values.result;
-    state.view.timeLeft.textContent = state.values.currentTime;
-    state.view.lives.textContent = state.values.currentLives;
+    updateScoreAndLives(); // Atualiza a pontuação e vidas
 
     // Esconde a tela de Game Over e mostra o container do jogo
     const gameOverScreen = document.getElementById("game-over-screen");
@@ -184,14 +185,13 @@ function handleSquareClick() {
 
     if (this.id === state.values.hitPosition) {
         state.values.result++;
-        state.view.score.textContent = state.values.result;
+        updateScoreAndLives(); // Atualiza a pontuação no DOM
         state.values.currentLives = Math.min(state.values.currentLives + 1, 3); // Adiciona vida se possível
-        state.view.lives.textContent = `${state.values.currentLives}x`;
         this.classList.remove("enemy");
         playSound("hit"); // Toca o som de acerto
     } else {
         state.values.currentLives--;
-        state.view.lives.textContent = `${state.values.currentLives}x`;
+        updateScoreAndLives(); // Atualiza as vidas no DOM
         playSound("miss"); // Toca o som de erro
     }
 }
@@ -216,5 +216,5 @@ function viewRanking() {
     rankings.forEach((entry, index) => {
         rankingMessage += `${index + 1}. ${entry.name}: ${entry.score}\n`;
     });
-    alert(rankingMessage); // Exibe o ranking em um alerta (ou pode ser em uma nova página/modal)
+    
 }

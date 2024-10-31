@@ -28,6 +28,9 @@
         console.log(rankings); // Para verificar os dados
         const rankingList = document.getElementById('ranking-list');
 
+        // Ordena os rankings do maior para o menor
+        rankings.sort((a, b) => b.score - a.score);
+
         if (rankings.length === 0) {
             const row = document.createElement('tr');
             row.innerHTML = `<td colspan="2">Nenhum ranking disponível</td>`;

@@ -72,13 +72,19 @@ body {
     border-bottom: 5px solid #ffd700;
 }
 
-.menu-time, .menu-score, .menu-lives {
+.menu-time, .menu-score {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
     min-width: 100px; /* Ajuste conforme necessário */
 }
+
+.menu-lives {
+    display: flex;
+    align-items: center;
+}
+
 
 #time-left, #score, #lives {
     font-size: 2rem;
@@ -174,7 +180,7 @@ body {
 
 #cadastro-screen img {
     position: relative; /* Muda para 'relative' para se comportar em relação ao fluxo do documento */
-    width: 40   %; /* Reduz a largura da imagem para 80% da largura do container */
+    width: 40%; /* Reduz a largura da imagem para 80% da largura do container */
     height: auto; /* Ajusta a altura automaticamente */
     margin-top: 20px; /* Adiciona um espaço acima da imagem, se necessário */
     display: block; /* Garante que a imagem seja tratada como um bloco, evitando espaço abaixo */
@@ -311,4 +317,50 @@ th, td {
 th {
     background-color: #ffd700;
     color: black;
+}
+
+img {
+    max-width: 100%; /* A imagem não pode exceder a largura do seu contêiner */
+    height: auto; /* Mantém a proporção */
+}
+@media (max-width: 768px) {
+    #cadastro-screen {
+        padding: 20px; /* Ajuste o padding para telas menores */
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+    .ralph-image {
+        width: 100%; /* Faz a imagem se adaptar à largura da tela */
+        height: auto; /* Mantém a proporção da imagem */
+    }
+}
+
+#score, #lives {
+    display: block;
+    opacity: 1; /* Garante que estão visíveis */
+}
+
+/* CSS para a imagem de fundo */
+.start-image {
+    width: 100%; /* Ajusta a largura ao contêiner pai */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove o espaço embaixo da imagem */
+}
+
+.start-container {
+    background-image: url('./src/assets/images/start.jpg');
+    background-size: cover; /* Cobre todo o contêiner */
+    background-position: center; /* Centraliza a imagem */
+    height: 100vh; /* Ajuste a altura conforme necessário */
+    width: 100%; /* Garante que o contêiner ocupe a largura total */
+}
+
+@media (max-width: 768px) {
+    .start-image {
+        width: 100%; /* Para telas menores */
+        height: auto; /* Mantém a proporção */
+    }
+
+    .start-container {
+        background-size: contain; /* Ajuste o tamanho da imagem de fundo */
+    }
 }
