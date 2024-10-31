@@ -180,7 +180,7 @@ body {
 
 #cadastro-screen img {
     position: relative; /* Muda para 'relative' para se comportar em relação ao fluxo do documento */
-    width: 40%; /* Reduz a largura da imagem para 80% da largura do container */
+    width: 25%; 
     height: auto; /* Ajusta a altura automaticamente */
     margin-top: 20px; /* Adiciona um espaço acima da imagem, se necessário */
     display: block; /* Garante que a imagem seja tratada como um bloco, evitando espaço abaixo */
